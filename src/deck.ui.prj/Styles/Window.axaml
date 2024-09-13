@@ -1,0 +1,28 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      
+    </Border>
+  </Design.PreviewWith>
+
+  <Style Selector="Window">
+    <Setter Property="Background" Value="{DynamicResource FullWhite}" />
+  </Style>
+
+  <Style Selector="Window.NoChrome">
+    <Style.Resources>
+      <x:Double x:Key="StatusBarHeight">45</x:Double>
+      <x:Double x:Key="TitleBarHeight">65</x:Double>
+    </Style.Resources>
+ 
+    <Setter Property="ExtendClientAreaChromeHints"       Value="NoChrome" />
+    <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+    <Setter Property="ExtendClientAreaTitleBarHeightHint"
+            Value="{DynamicResource TitleBarHeight}"/>
+  </Style>
+
+  <Style Selector="Window[WindowState=Maximized]">
+    <Setter Property="Padding" Value="8" />
+  </Style>
+</Styles>

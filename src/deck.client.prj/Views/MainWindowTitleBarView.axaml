@@ -1,0 +1,102 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sys="using:System"
+             xmlns:converters="using:Deck.UI.Converters"
+             x:Class="Deck.Client.Views.MainWindowTitleBarView"
+             
+             mc:Ignorable="d" 
+             d:DesignWidth="800" d:DesignHeight="100">
+
+    <UserControl.Resources> 
+        <converters:StringAllSymbolsToUpperConverter x:Key="StringAllSymbolsToUpperConverter"/>
+        
+        <converters:InvertedComparisionConverter x:Key="IsNotMaximizedConverter"
+                                                 x:TypeArguments="WindowState"
+                                                 Comparand="{x:Static WindowState.Maximized}"/>
+
+        <converters:ComparisionConverter x:Key="IsMaximizedConverter"
+                                         x:TypeArguments="WindowState"
+                                         Comparand="{x:Static WindowState.Maximized}"/>
+    </UserControl.Resources>
+
+    <Grid ColumnDefinitions="auto, *, auto">
+
+        <Border Grid.Row="0" Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Background="{DynamicResource Main}"
+                Height="{DynamicResource TitleBarHeight}"
+                BorderThickness="0,0,0,1"
+                CornerRadius="0"
+                IsHitTestVisible="False"/>
+        
+        <Grid Grid.Column="0"
+              ColumnDefinitions="Auto,*" 
+              Margin="14,0,0,0" 
+              IsHitTestVisible="False">
+            
+            <Image Grid.Column="0"
+                   Width="32" Height="32"
+                   Source="avares://deck.ui/Assets/avalonia-logo.ico"/>
+            <TextBlock Grid.Column="1"
+                       Margin="10,0" 
+                       Classes="ApplicationName"
+                       Text="{Binding ApplicationName,
+                                      Converter={StaticResource StringAllSymbolsToUpperConverter}}" />
+        </Grid>
+        
+        <StackPanel Grid.Column="2"
+                    Margin="32,0,24,0"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Classes="NoBackgroundButton"
+                    Margin="0,0,19,0" 
+                    Command="{Binding Commands.Minimize}"
+                    CommandParameter="{Binding $parent[Window]}">
+                <Rectangle Fill="{DynamicResource FullWhite}"
+                           Width="32" Height="32">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Source="avares://deck.ui/Assets/Images/minimize.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Classes="NoBackgroundButton"
+                    Margin="0,0,16,0"
+                    Command="{Binding Commands.Maximize}"
+                    CommandParameter="{Binding $parent[Window]}"
+                    IsVisible="{Binding $parent[Window].WindowState,
+                                        Converter={StaticResource IsMaximizedConverter}}">
+                <Rectangle Fill="{DynamicResource FullWhite}"
+                          Width="24" Height="24">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Source="avares://deck.ui/Assets/Images/titlebar_minimize.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Classes="NoBackgroundButton"
+                    Margin="0,0,16,0"
+                    Command="{Binding Commands.Maximize}"
+                    CommandParameter="{Binding $parent[Window]}"
+                    IsVisible="{Binding $parent[Window].WindowState,
+                                        Converter={StaticResource IsNotMaximizedConverter}}">
+                <Rectangle Fill="{DynamicResource FullWhite}"
+                           Width="24" Height="24">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Source="avares://deck.ui/Assets/Images/titlebar_maximize.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Classes="NoBackgroundButton"
+                    Command="{Binding Commands.Close}"
+                    CommandParameter="{Binding $parent[Window]}">
+                <Rectangle Fill="{DynamicResource FullWhite}"
+                           Width="24" Height="24">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Source="avares://deck.ui/Assets/Images/close.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

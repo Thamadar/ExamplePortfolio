@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Deck.Client.Views.Panels.DeckEditDialogWindowView"
+        
+        mc:Ignorable="d"
+        d:DesignWidth="500" d:DesignHeight="200"
+         
+        Icon="avares://deck.ui/Assets/avalonia-logo.ico"   
+        Width="500" Height="200"
+        CanResize="False"
+        Title="Edit deck">
+    
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" 
+          Margin="20,0"
+          RowDefinitions="*,auto"> 
+        <TextBox Grid.Row="0"
+                 Text="{Binding NewName}"
+                 Watermark="Введите новое наименование колоды"/>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0">
+            <Button VerticalAlignment="Bottom" 
+                    Width="120" Height="35"
+                    Content="ОТМЕНА"
+                    Command="{Binding Commands.Accept}"
+                    CommandParameter="{Binding  $parent[Window]}"/>
+            <Button VerticalAlignment="Bottom"
+                    Width="120" Height="35"
+                    Content="ПРИНЯТЬ"
+                    Command="{Binding Commands.Accept}"
+                    CommandParameter="{Binding  $parent[Window]}"/>
+        </StackPanel> 
+    </Grid>
+</Window>

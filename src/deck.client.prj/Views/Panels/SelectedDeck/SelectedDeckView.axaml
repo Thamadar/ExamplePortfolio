@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Deck.Client.Views.Panels;assembly=deck.client"
+             x:Class="Deck.Client.Views.Panels.SelectedDeckView"
+             
+             mc:Ignorable="d"
+             d:DesignWidth="800" d:DesignHeight="450">
+
+    <UserControl.Resources>
+        <local:CardConverter x:Key="CardConverter"/>
+    </UserControl.Resources>
+
+    <Grid RowDefinitions="*, auto"
+          Margin="8">
+        <Border Grid.Row="0"
+                Width="600"
+                CornerRadius="16"
+                HorizontalAlignment="Center" >
+            <Grid RowDefinitions="*, auto"
+                  Margin="19,16,19,8">
+                <Grid Grid.Row="0"
+                      Background="{DynamicResource Main}">
+                    <TextBlock VerticalAlignment="Center"
+                               Text="{Binding SelectedDeck.Name}"
+                               FontSize="{StaticResource LargeFontSize}"
+                               FontWeight="SemiBold"/>
+                    <Image Stretch="Fill">
+                        <Image.Source>
+                            <MultiBinding Converter="{StaticResource CardConverter}">
+                                <Binding Path="SelectedDeck.LastVisibleCard.Suit" />
+                                <Binding Path="SelectedDeck.LastVisibleCard.PowerValue" />
+                            </MultiBinding>
+                        </Image.Source>
+                    </Image>
+                </Grid>
+            </Grid>
+        </Border>
+        <Button Grid.Column="2" Grid.Row="1"
+                Margin="19,16,19,0"
+                Width="200"
+                HorizontalAlignment="Stretch"
+                Content="ПЕРЕТАСОВАТЬ"
+                Command="{Binding Commands.ShaffleDeck}"/>
+    </Grid>
+</UserControl>

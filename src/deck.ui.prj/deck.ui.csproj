@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release</Configurations>
+    <RootNamespace>Deck.UI</RootNamespace>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  
+  <ItemGroup> 
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup> 
+    <AvaloniaResource Include="..\resources\avalonia-logo.ico" Link="Assets\avalonia-logo.ico" />
+
+    <AvaloniaResource Include="..\resources\Images\Cards\JokerLight.png" Link="Assets\Images\Cards\JokerLight.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\JokerDark.png" Link="Assets\Images\Cards\JokerDark.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs1.png" Link="Assets\Images\Cards\Clubs1.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs2.png" Link="Assets\Images\Cards\Clubs2.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs3.png" Link="Assets\Images\Cards\Clubs3.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs4.png" Link="Assets\Images\Cards\Clubs4.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs5.png" Link="Assets\Images\Cards\Clubs5.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs6.png" Link="Assets\Images\Cards\Clubs6.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs7.png" Link="Assets\Images\Cards\Clubs7.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs8.png" Link="Assets\Images\Cards\Clubs8.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs9.png" Link="Assets\Images\Cards\Clubs9.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs10.png" Link="Assets\Images\Cards\Clubs10.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs11.png" Link="Assets\Images\Cards\Clubs11.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs12.png" Link="Assets\Images\Cards\Clubs12.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Clubs13.png" Link="Assets\Images\Cards\Clubs13.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds1.png" Link="Assets\Images\Cards\Diamonds1.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds2.png" Link="Assets\Images\Cards\Diamonds2.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds3.png" Link="Assets\Images\Cards\Diamonds3.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds4.png" Link="Assets\Images\Cards\Diamonds4.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds5.png" Link="Assets\Images\Cards\Diamonds5.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds6.png" Link="Assets\Images\Cards\Diamonds6.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds7.png" Link="Assets\Images\Cards\Diamonds7.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds8.png" Link="Assets\Images\Cards\Diamonds8.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds9.png" Link="Assets\Images\Cards\Diamonds9.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds10.png" Link="Assets\Images\Cards\Diamonds10.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds11.png" Link="Assets\Images\Cards\Diamonds11.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds12.png" Link="Assets\Images\Cards\Diamonds12.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Diamonds13.png" Link="Assets\Images\Cards\Diamonds13.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts1.png" Link="Assets\Images\Cards\Hearts1.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts2.png" Link="Assets\Images\Cards\Hearts2.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts3.png" Link="Assets\Images\Cards\Hearts3.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts4.png" Link="Assets\Images\Cards\Hearts4.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts5.png" Link="Assets\Images\Cards\Hearts5.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts6.png" Link="Assets\Images\Cards\Hearts6.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts7.png" Link="Assets\Images\Cards\Hearts7.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts8.png" Link="Assets\Images\Cards\Hearts8.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts9.png" Link="Assets\Images\Cards\Hearts9.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts10.png" Link="Assets\Images\Cards\Hearts10.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts11.png" Link="Assets\Images\Cards\Hearts11.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts12.png" Link="Assets\Images\Cards\Hearts12.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Hearts13.png" Link="Assets\Images\Cards\Hearts13.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades1.png" Link="Assets\Images\Cards\Spades1.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades2.png" Link="Assets\Images\Cards\Spades2.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades3.png" Link="Assets\Images\Cards\Spades3.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades4.png" Link="Assets\Images\Cards\Spades4.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades5.png" Link="Assets\Images\Cards\Spades5.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades6.png" Link="Assets\Images\Cards\Spades6.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades7.png" Link="Assets\Images\Cards\Spades7.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades8.png" Link="Assets\Images\Cards\Spades8.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades9.png" Link="Assets\Images\Cards\Spades9.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades10.png" Link="Assets\Images\Cards\Spades10.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades11.png" Link="Assets\Images\Cards\Spades11.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades12.png" Link="Assets\Images\Cards\Spades12.png" />
+    <AvaloniaResource Include="..\resources\Images\Cards\Spades13.png" Link="Assets\Images\Cards\Spades13.png" /> 
+
+    <AvaloniaResource Include="..\resources\Images\close.png" Link="Assets\Images\close.png" /> 
+    <AvaloniaResource Include="..\resources\Images\titlebar_maximize.png" Link="Assets\Images\titlebar_maximize.png" />
+    <AvaloniaResource Include="..\resources\Images\titlebar_minimize.png" Link="Assets\Images\titlebar_minimize.png" />
+    <AvaloniaResource Include="..\resources\Images\minimize.png" Link="Assets\Images\minimize.png" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.0" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.0" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Behaviors\" />
+  </ItemGroup>
+</Project>

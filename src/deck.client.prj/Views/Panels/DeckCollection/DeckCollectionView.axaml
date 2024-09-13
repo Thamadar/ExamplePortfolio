@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="Deck.Client.Views.Panels.DeckCollectionView"
+
+             mc:Ignorable="d"
+             d:DesignWidth="300" d:DesignHeight="450">
+
+    <Border Margin="8"
+                              Background="{DynamicResource SmokeMainColor}">
+        <Grid RowDefinitions="*, auto">
+            <ScrollViewer Grid.Row="0"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl ItemsSource="{Binding Decks}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"
+                                        Spacing="8"
+                                        Margin="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*, auto">
+                                <!-- Должен быть ToggleButton -->
+                                <Button Grid.ColumnSpan="2"
+                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                        Command="{Binding $parent[ItemsControl].DataContext.Commands.SelectDeck}"
+                                        CommandParameter="{Binding Id}"/>
+                                <TextBlock Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0"
+                                           Text="{Binding Name}" />
+                                <Button Grid.Column="1"
+                                        Classes="NoBackgroundButton"
+                                        CornerRadius="0,0,3,3"
+                                        HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                                        Command="{Binding $parent[ItemsControl].DataContext.Commands.EditDeckName}">
+                                    <!-- ТУТ должна была быть иконка, а не текст в баттоне. -->
+                                    <TextBlock Text="Edit"/>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="*,6,*"
+                  Margin="19,16,19,8">
+                <Button Grid.Column="0" 
+                        HorizontalAlignment="Stretch"
+                        Content="УДАЛИТЬ"
+                        Command="{Binding Commands.Remove}"/>
+                <Button Grid.Column="2"
+                        HorizontalAlignment="Stretch"
+                        Content="ДОБАВИТЬ"
+                        Command="{Binding Commands.Add}"/>
+            </Grid>
+        </Grid>
+    </Border> 
+</UserControl>

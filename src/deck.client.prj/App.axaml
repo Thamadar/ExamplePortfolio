@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="using:Deck.UI"
+             xmlns:local="using:Deck.Client"
+             
+             x:Class="Deck.Client.App"
+             RequestedThemeVariant="Light">
+
+   <Application.DataTemplates>
+      <ui:ViewLocator/>
+   </Application.DataTemplates>
+  
+  <Application.Styles>
+      <FluentTheme />
+      <StyleInclude Source="avares://deck.ui/Styles/Styles.axaml"/>
+   </Application.Styles>
+</Application>

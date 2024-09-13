@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="using:Deck.Client.Views.Panels"
+             x:Class="Deck.Client.Views.Panels.PanelsView"
+
+             mc:Ignorable="d"
+             d:DesignWidth="1500" d:DesignHeight="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="350" Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:DeckCollectionView Grid.Column="0"
+                                  DataContext="{Binding DeckCollectionViewModel}"/>
+        <local:SelectedDeckView DataContext="{Binding SelectedDeckViewModel}"
+                                Grid.Column="1"/>
+    </Grid>
+</UserControl>
