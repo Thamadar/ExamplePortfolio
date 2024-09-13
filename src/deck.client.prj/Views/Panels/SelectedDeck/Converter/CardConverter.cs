@@ -15,17 +15,12 @@ public class CardConverter : IMultiValueConverter
 	{
 		if(values.Count == 2)
 		{
-			var suit = values[0] != null  && values[0] is Suit?
+			var suit = values[0] != null ?
 					(Suit)(values[0]) :
 					Suit.Spades;
-			var powerValue = values[1] != null && values[0] is int ?
+			var powerValue = values[1] != null ?
 						(int)values[1]
-						: -1;
-
-			if(powerValue == -1)
-			{
-				return AvaloniaProperty.UnsetValue;
-			}
+						: -1; 
 
 			var uri = GetCardIconUri(suit, powerValue);
 			if(uri != null)

@@ -43,7 +43,7 @@ public class Deck : IDeck
 	{
 		var deckSize = GetDeckSize(deckType) + (hasJokers ? 2 : 0);
 		var cards    = Card.CreateCards(deckSize, hasJokers);
-		return new Deck(cards, deckType, id, $"Default {id}");
+		return new Deck(cards, deckType, id, $"Колода {id+1}");
 	}
 
 	public static int GetDeckSize(DeckType deckType)

@@ -32,6 +32,10 @@ public class DeckRepository : IDeckRepository
 
 	public bool RenameDeck(int id, string name)
 	{
+		if(name == null || name == "")
+		{
+			return false;
+		}
 		var deck = _deckStorage.Decks.Where(deck => deck.Id == id).FirstOrDefault();
 		if(deck != null)
 		{

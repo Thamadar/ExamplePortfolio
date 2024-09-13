@@ -5,29 +5,25 @@
         xmlns:local="using:Deck.Client.Views"
         xmlns:panels="using:Deck.Client.Views.Panels"
         x:Class="Deck.Client.Views.MainWindowView"
-
-        mc:Ignorable="d" d:DesignWidth="800"
-
-        Classes="NoChrome"
-        Icon="avares://deck.ui/Assets/avalonia-logo.ico"
+        
+        mc:Ignorable="d" d:DesignWidth="800" 
+ 
+        Classes="NoChrome" 
+        Icon="avares://deck.ui/Assets/avalonia-logo.ico" 
         WindowState="Maximized"
-        Topmost="True"
-        MinWidth="1300" MinHeight="768"
+        Topmost="True" 
+        MinWidth="1300" MinHeight="768" 
         Background="{DynamicResource DarkMain}">
-
-    <Grid RowDefinitions="Auto,*">
-
+ 
+    <Grid RowDefinitions="Auto,*" >
+        
         <Panel Grid.Row="0"
                Height="{DynamicResource TitleBarHeight}">
             <local:MainWindowTitleBarView />
         </Panel>
 
-        <Panel Grid.Row="1">
-            <panels:PanelsView DataContext="{Binding Panels}" />
+        <Panel Grid.Row="1" >
+            <panels:PanelsView DataContext="{Binding Panels}"/>
         </Panel>
-
-        <TextBox Text="{Binding InputTextBox}"
-                  Width="500"
-                 Height="500" />
     </Grid>
 </Window>

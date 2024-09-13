@@ -14,12 +14,7 @@ public class InvertedComparisionConverter<T> : IValueConverter
 
 	public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
-		if((value is T x))
-		{
-			var a = Comparer<T>.Default.Compare(x, Comparand);
-		}
-		return value;
-		//return (value is T x) ? Comparer<T>.Default.Compare(x, Comparand) != 0 : value;
+		return (value is T x) ? Comparer<T>.Default.Compare(x, Comparand) != 0 : AvaloniaProperty.UnsetValue;
 	}
 
 	public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

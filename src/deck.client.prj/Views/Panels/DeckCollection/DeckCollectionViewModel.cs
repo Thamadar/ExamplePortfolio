@@ -46,9 +46,9 @@ public sealed partial class DeckCollectionViewModel : ReactiveViewModelBase
 	}
 
 	private void UpdateDecks() => Decks = _deckRepository
-			.GetDecks()
-			.Select(deck => new DeckCollectionItem(deck.Cards, deck.DeckType, deck.Id, deck.Name) as IDeck)
-			.ToList();
+										  .GetDecks()
+										  .Select(deck => new DeckCollectionItem(deck.Cards, deck.DeckType, deck.Id, deck.Name) as IDeck)
+										  .ToList();
 
 	public void SetSelectedDeck(IDeck deck) => SelectedDeck = deck;
 
