@@ -1,69 +1,92 @@
-﻿using Deck.Client.Extensions; 
+﻿using Avalonia.Controls;
+using Deck.Client.Views.Panels;
+using DynamicData;
 
 namespace Deck.Client.Data;
 public class DeckRepository : IDeckRepository
-{
-	private readonly IDeckStorage _deckStorage;
+{ 
+	private readonly SourceList<IDeck> _decks = new(); 
 
-	public event EventHandler DecksChanged;
-
-	public DeckRepository(IDeckStorage deckStorage)
+	public DeckRepository()
 	{
-		_deckStorage = deckStorage;
+		LoadDesk();
 	}
 
+	/// <inheritdoc/>
+	public IObservable<IChangeSet<IDeck>> ConnectToDecks()
+	{
+		return _decks.Connect();
+	}
+
+	/// <inheritdoc/>
 	public void AddDeck(IDeck deck)
 	{
-		_deckStorage.Decks.Add(deck);
-		DecksChanged?.Invoke(this, EventArgs.Empty);
+		_decks.Add(deck); 
 	}
 
+	/// <inheritdoc/>
 	public bool RemoveDeck(int id)
 	{
-		var deck = _deckStorage.Decks.Where(deck => deck.Id == id).FirstOrDefault();
+		var deck = _decks.Items.Where(deck => deck.Id == id).FirstOrDefault();
 		if(deck != null)
 		{
-			_deckStorage.Decks.Remove(deck);
-			DecksChanged?.Invoke(this, EventArgs.Empty);
+			_decks.Remove(deck); 
 			return true;
 		}
 		return false;
 	}
 
+	/// <inheritdoc/>
 	public bool RenameDeck(int id, string name)
 	{
 		if(name == null || name == "")
 		{
 			return false;
 		}
-		var deck = _deckStorage.Decks.Where(deck => deck.Id == id).FirstOrDefault();
+		var deck = _decks.Items.Where(deck => deck.Id == id).FirstOrDefault();
 		if(deck != null)
 		{
-			deck.RenameDeck(name);
-			DecksChanged?.Invoke(this, EventArgs.Empty);
+			deck.RenameDeck(name); 
 			return true;
 		}
 		return false;
-	}
+	} 
 
+	/// <inheritdoc/>
+	public IDeck? GetDeck(int id) => _decks.Items.Where(deck => deck.Id == id).FirstOrDefault() ?? null;
 
-	public List<IDeck> GetDecks() => _deckStorage.Decks;
-
-	public IDeck GetDeck(int id) => _deckStorage.Decks.Where(deck => deck.Id == id).FirstOrDefault();
-
+	/// <inheritdoc/>
 	public bool ShaffleDeck(
 		int id,
 		int[] newPositions = null)
 	{
-		var deck     = _deckStorage.Decks.Where(deck => deck.Id == id).FirstOrDefault();
+		var deck     = _decks.Items.Where(deck => deck.Id == id).FirstOrDefault();
 		var cards    = deck?.Cards;
-			newPositions = newPositions == null ?
-			RandomGeneratePositions(cards?.Count()) :
-			newPositions;
+
+		newPositions = newPositions == null ?
+					   RandomGeneratePositions(cards?.Count()) :
+					   newPositions;
 		 
-		deck?.ShaffleDeck(newPositions);
-		DecksChanged?.Invoke(this, EventArgs.Empty);
+		deck?.ShaffleDeck(newPositions); 
 		return true;
+	}
+
+	/// <summary>
+	/// Допустим, загрузка колоды откуда-то (TCP, DB).
+	/// </summary>
+	private void LoadDesk()
+	{
+		var decks = new List<IDeck>()
+		   {
+			   DeckCollectionItem.CreateDeck(DeckType.Default, 0),
+			   DeckCollectionItem.CreateDeck(DeckType.Default, 1, true),
+			   DeckCollectionItem.CreateDeck(DeckType.Default, 2),
+			   DeckCollectionItem.CreateDeck(DeckType.Large,   3, true),
+			   DeckCollectionItem.CreateDeck(DeckType.Default, 4, true),
+		   };
+
+		_decks.Clear();
+		_decks.AddRange(decks);
 	}
 
 	private int[] RandomGeneratePositions(int? cards)
@@ -97,5 +120,5 @@ public class DeckRepository : IDeckRepository
 			return intArray;
 		}
 		return new int[0];
-	}
+	} 
 }

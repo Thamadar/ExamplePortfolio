@@ -22,7 +22,7 @@ public sealed partial class SelectedDeckViewModel : ReactiveViewModelBase
 	public SelectedDeckViewModel(
 		IDeckRepository deckRepository)
 	{
-		_deckRepository = deckRepository; 
+		_deckRepository = deckRepository;
 	}
 
 	public void SetSelectedDeck(IDeck deck) => SelectedDeck = deck;

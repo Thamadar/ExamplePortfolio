@@ -15,8 +15,12 @@ public sealed partial class DeckEditDialogWindowViewModel : ReactiveViewModelBas
 
 	public bool IsSave { get; private set; }
 
-	public DeckEditDialogWindowViewModel()
-	{ }
+	public DeckEditDialogWindowViewModel(
+		string text = ""
+		)
+	{
+		NewName = text;
+	}
 
 	public void SaveNewname() => IsSave = true; 
 }

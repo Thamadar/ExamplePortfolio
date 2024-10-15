@@ -4,10 +4,7 @@ public class Card : ICard
 	public Suit Suit { get; }
 
 	public int PowerValue { get; }
-
-	//TO DO: локализазию ещё добавить, но времени, судя по всему, немного.
-	//public string DisplayName => Localization.Scope($"{Suit}{PowerValue}") 
-
+	 
 	public Card(
 		Suit suit,
 		int powerValue)

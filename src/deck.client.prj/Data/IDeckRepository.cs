@@ -1,10 +1,12 @@
-﻿namespace Deck.Client.Data;
+﻿using DynamicData;
+
+namespace Deck.Client.Data;
 public interface IDeckRepository
 {
 	/// <summary>
 	/// Получить все колоды из Storage'а.
 	/// </summary> 
-	List<IDeck> GetDecks();
+	IObservable<IChangeSet<IDeck>> ConnectToDecks();
 
 	/// <summary>
 	/// Получить колоду из Storage по её ID.
@@ -30,6 +32,4 @@ public interface IDeckRepository
 	/// Удалить колоду из Storage по ID.
 	/// </summary> 
 	bool RemoveDeck(int id);
-
-	event EventHandler DecksChanged;
 }

@@ -8,7 +8,7 @@
              d:DesignWidth="300" d:DesignHeight="450">
 
     <Border Margin="8"
-                              Background="{DynamicResource SmokeMainColor}">
+            Background="{DynamicResource SmokeMainColor}">
         <Grid RowDefinitions="*, auto">
             <ScrollViewer Grid.Row="0"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -16,26 +16,35 @@
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical"
-                                        Spacing="8"
-                                        Margin="8"/>
+                                        Spacing="8" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="*, auto">
-                                <!-- Должен быть ToggleButton -->
-                                <Button Grid.ColumnSpan="2"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        Command="{Binding $parent[ItemsControl].DataContext.Commands.SelectDeck}"
-                                        CommandParameter="{Binding Id}"/>
+                                <ToggleButton Grid.ColumnSpan="2"
+                                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                              IsChecked="{Binding IsSelected, Mode=OneWay}"
+                                              Command="{Binding $parent[ItemsControl].DataContext.Commands.SelectDeck}"
+                                              CommandParameter="{Binding Id}"/>
                                 <TextBlock Grid.Column="0"
                                            VerticalAlignment="Center"
+                                           Foreground="{StaticResource FullWhite}"
                                            Margin="0,0"
+                                           IsHitTestVisible="False"
                                            Text="{Binding Name}" />
+                                
+                                <Separator Grid.Column="0"
+                                           HorizontalAlignment="Right"
+                                           Background="White"
+                                           Margin="0,0,1,0"
+                                           Width="1" Height="NaN"/>
+                                
                                 <Button Grid.Column="1"
                                         Classes="NoBackgroundButton"
                                         CornerRadius="0,0,3,3"
-                                        HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                                        
+                                        VerticalAlignment="Stretch"
                                         Command="{Binding $parent[ItemsControl].DataContext.Commands.EditDeckName}">
                                     <!-- ТУТ должна была быть иконка, а не текст в баттоне. -->
                                     <TextBlock Text="Edit"/>

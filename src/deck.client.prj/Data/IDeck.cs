@@ -24,7 +24,12 @@ public interface IDeck
 	/// <summary>
 	/// Самая верхняя карта.
 	/// </summary>
-	public ICard LastVisibleCard { get; }
+	public ICard? LastVisibleCard { get; }
+
+	/// <summary>
+	/// Выбрана ли колода в данный момент.
+	/// </summary>
+	public bool IsSelected{ get; set; }
 
 	/// <summary>
 	/// Переименовать колоду.

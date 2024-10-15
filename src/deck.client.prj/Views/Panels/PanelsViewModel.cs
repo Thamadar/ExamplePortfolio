@@ -1,4 +1,6 @@
-﻿using Deck.Client.Data; 
+﻿using Deck.Client.Data;
+using ReactiveUI;
+using System.Collections.ObjectModel;
 
 namespace Deck.Client.Views.Panels;
 public class PanelsViewModel
@@ -17,16 +19,10 @@ public class PanelsViewModel
 
 		DeckCollectionViewModel = deckCollectionViewModel;
 		SelectedDeckViewModel   = selectedDeckViewModel;
-		 
-		DeckCollectionViewModel.PropertyChanged += OnSelectedDeckChanged;
-		DeckCollectionViewModel.Decks = _deckRepository.GetDecks(); //Костыль для обновления SelectedDeckViewModel.SelectedDesk.
+
+		DeckCollectionViewModel
+			.WhenAnyValue(x => x.SelectedDeck)
+			.Subscribe(x => { SelectedDeckViewModel.SetSelectedDeck(x); }); 
 	}
 
-	private void OnSelectedDeckChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-	{
-		if(e.PropertyName == nameof(DeckCollectionViewModel.SelectedDeck))
-		{
-			SelectedDeckViewModel.SetSelectedDeck(DeckCollectionViewModel.SelectedDeck);
-		}
-	}
 }

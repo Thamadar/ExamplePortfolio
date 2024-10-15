@@ -15,19 +15,32 @@ public class CardConverter : IMultiValueConverter
 	{
 		if(values.Count == 2)
 		{
+			if(values[0] is UnsetValueType ||
+				values[1] is UnsetValueType)
+			{
+				return AvaloniaProperty.UnsetValue;
+			}
+
 			var suit = values[0] != null ?
-					(Suit)(values[0]) :
-					Suit.Spades;
+					   (Suit)(values[0]) :
+					   Suit.Spades;
 			var powerValue = values[1] != null ?
-						(int)values[1]
-						: -1; 
+						     (int)values[1]
+						     : -1; 
 
 			var uri = GetCardIconUri(suit, powerValue);
 			if(uri != null)
-			{   
-				var asset = AssetLoader.Open(uri);
-
-				return new Bitmap(asset);
+			{
+				Stream? asset;
+				try
+				{
+					asset = AssetLoader.Open(uri); 
+					return new Bitmap(asset);
+				}
+				catch(Exception e)
+				{
+					return AvaloniaProperty.UnsetValue;
+				}  
 			} 
 			return AvaloniaProperty.UnsetValue;
 		}

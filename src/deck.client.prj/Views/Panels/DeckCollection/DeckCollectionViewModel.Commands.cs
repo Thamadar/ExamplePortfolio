@@ -15,7 +15,7 @@ public sealed partial class DeckCollectionViewModel
 			window =>
 			{
 				var dialogWindow         = new DeckEditDialogWindowView();
-				var dialogViewModel      = new DeckEditDialogWindowViewModel();
+				var dialogViewModel      = new DeckEditDialogWindowViewModel(vm.SelectedDeck?.Name ?? "");
 				dialogWindow.DataContext = dialogViewModel;
 				dialogWindow.Closed += (object? sender, EventArgs e) =>
 				{
@@ -40,7 +40,7 @@ public sealed partial class DeckCollectionViewModel
 			{
 				var rnd = new Random();
 				var id = vm.Decks.LastOrDefault().Id + 1;
-				var deck = Deck.Client.Data.Deck.CreateDeck(
+				var deck = DeckCollectionItem.CreateDeck(
 					(DeckType)rnd.Next(0,3),
 					id,
 					rnd.Next(0,3) == 3);

@@ -21,11 +21,7 @@
             <Grid RowDefinitions="*, auto"
                   Margin="19,16,19,8">
                 <Grid Grid.Row="0"
-                      Background="{DynamicResource Main}">
-                    <TextBlock VerticalAlignment="Center"
-                               Text="{Binding SelectedDeck.Name}"
-                               FontSize="{StaticResource LargeFontSize}"
-                               FontWeight="SemiBold"/>
+                      Background="{DynamicResource Main}"> 
                     <Image Stretch="Fill">
                         <Image.Source>
                             <MultiBinding Converter="{StaticResource CardConverter}">
@@ -34,6 +30,11 @@
                             </MultiBinding>
                         </Image.Source>
                     </Image>
+                    <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Margin="0,8,0,0"
+                               Text="{Binding SelectedDeck.Name}"
+                               FontSize="{StaticResource LargeFontSize}"
+                               FontWeight="SemiBold"/>
                 </Grid>
             </Grid>
         </Border>

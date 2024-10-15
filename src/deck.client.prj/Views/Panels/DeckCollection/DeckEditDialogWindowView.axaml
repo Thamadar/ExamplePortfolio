@@ -17,7 +17,7 @@
           RowDefinitions="*,auto"> 
         <TextBox Grid.Row="0"
                  Text="{Binding NewName}"
-                 Watermark="Введите новое наименование колоды"/>
+                 Watermark="Введите наименование колоды"/>
 
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
